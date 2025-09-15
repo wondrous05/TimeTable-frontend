@@ -16,8 +16,8 @@ export default function ResetPassword() {
     setLoading(true);
     try {
       const endpoint = role === "admin"
-        ? "http://localhost:4500/api/v1/admin/reset-password"
-        : "http://localhost:4500/api/v1/student/reset-password";
+  ? "https://api-time-1scv.onrender.com/api/v1/admin/reset-password"
+  : "https://api-time-1scv.onrender.com/api/v1/student/reset-password";
       const res = await axios.post(endpoint, { email, token, password }, {
         headers: { "Content-Type": "application/json" },
       });

@@ -20,7 +20,7 @@ export default function Signup() {
     setError("");
     setLoading(true);
 
-    const endpoint = "http://localhost:4500/api/v1/student/signup";
+  const endpoint = "https://api-time-1scv.onrender.com/api/v1/student/signup";
     const body = {
       email,
       password,

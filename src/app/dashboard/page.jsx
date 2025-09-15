@@ -54,7 +54,7 @@ export default function Dashboard() {
     setTimetable([]);
 
     try {
-      const res = await axios.get("http://localhost:4500/api/v1/student/view", {
+  const res = await axios.get("https://api-time-1scv.onrender.com/api/v1/student/view", {
         params: { semester, level, year, department }, // ✅ department now correct
         headers: { Authorization: `Bearer ${token}` },
       });

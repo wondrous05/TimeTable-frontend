@@ -21,7 +21,7 @@ export default function Login() {
     try {
       const endpoint =
       
-         "http://localhost:4500/api/v1/student/login";
+         "https://api-time-1scv.onrender.com/api/v1/student/login";
          
       const res = await axios.post(
         endpoint,

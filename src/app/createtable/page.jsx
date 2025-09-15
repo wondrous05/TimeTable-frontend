@@ -55,7 +55,7 @@ export default function CreateTable() {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.post(
-        "http://localhost:4500/api/v1/table/create/table",
+  "https://api-time-1scv.onrender.com/api/v1/table/create/table",
         {
           department,
           course,

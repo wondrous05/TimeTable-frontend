@@ -13,7 +13,7 @@ export default function AdminLogin() {
     e.preventDefault();
     setLoading(true);
     try {
-      const endpoint = "http://localhost:4500/api/v1/admin/login";
+  const endpoint = "https://api-time-1scv.onrender.com/api/v1/admin/login";
       const res = await axios.post(
         endpoint,
         { email, password },

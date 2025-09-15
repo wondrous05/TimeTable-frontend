@@ -16,7 +16,7 @@ export default function AdminSignup() {
     e.preventDefault();
     setLoading(true);
 
-    const endpoint = "http://localhost:4500/api/v1/admin/signup";
+  const endpoint = "https://api-time-1scv.onrender.com/api/v1/admin/signup";
     const body = { email, password, name, phonenumber, role: "admin" };
 
     try {

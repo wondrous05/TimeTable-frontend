@@ -15,8 +15,8 @@ export default function ForgotPassword() {
     setLoading(true);
   // No error/success state, clear toast
     const endpoint = role === "admin"
-      ? "http://localhost:4500/api/v1/admin/forgotpassword"
-      : "http://localhost:4500/api/v1/student/forgotpassword";
+  ? "https://api-time-1scv.onrender.com/api/v1/admin/forgotpassword"
+  : "https://api-time-1scv.onrender.com/api/v1/student/forgotpassword";
     try {
       const res = await axios.post(endpoint, { email }, {
         headers: { "Content-Type": "application/json" },
