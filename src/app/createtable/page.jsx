@@ -34,6 +34,41 @@ const timeSlots = [
   "16:00 - 18:00",
 ];
 
+// Predefined lecture rooms
+const lectureRoomOptions = [
+  "COM RM 1",
+  "COM RM 2",
+  "ICT RM 7",
+  "ICT RM 8",
+  "ICT RM 11",
+  "LAB 10",
+  "LAB 11",
+  "LAB 12",
+  "HW Lab",
+  "Other"
+];
+
+// Predefined lecturers
+const lecturerOptions = [
+  "MR. AKINLADE",
+  " DR (MRS). ALARAN",
+  "MR. ADEBESIN",
+  "MRS. ADEBAYO",
+  "MRS. ADESINA",
+  "MR ADEBAYO",
+  "MR. ADETONA",
+  "DR. ORUNSOLU",
+  "DR. (MRS) LAWAL",
+  "MR. ELEGBEDE",
+  "MR. ODEKUNLE",
+  "MR. OLADIMEJI",
+  "MR. OLATUNJI",
+  "MRS. OYELOWO",
+  "MR. KAREEM",
+  "MR. SALAWU",
+  "Other"
+];
+
 export default function CreateTable() {
   const [department, setDepartment] = useState("");
   const [course, setCourse] = useState("");
@@ -43,9 +78,10 @@ export default function CreateTable() {
   const [year, setYear] = useState("");
   const academicSessions = getAcademicSessions(2015, 15);
   const [lectureRoom, setLectureRoom] = useState("");
+  const [customLectureRoom, setCustomLectureRoom] = useState("");
   const [lecturer, setLecturer] = useState("");
+  const [customLecturer, setCustomLecturer] = useState("");
   const [level, setLevel] = useState("");
-  // Department removed
   const [loading, setLoading] = useState(false); // ✅ only loading state
 
   const handleSubmit = async (e) => {
@@ -55,7 +91,7 @@ export default function CreateTable() {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.post(
-  "https://api-time-1scv.onrender.com/api/v1/table/create/table",
+        "https://api-time-1scv.onrender.com/api/v1/table/create/table",
         {
           department,
           course,
@@ -63,8 +99,8 @@ export default function CreateTable() {
           day,
           semester,
           year,
-          lectureRoom,
-          lecturer,
+          lectureRoom: lectureRoom === "Other" ? customLectureRoom : lectureRoom,
+          lecturer: lecturer === "Other" ? customLecturer : lecturer,
           level,
         },
         {
@@ -175,23 +211,51 @@ export default function CreateTable() {
           </div>
           <div>
             <label className="block text-blue-700 font-medium mb-2">Lecture Room</label>
-            <input
-              type="text"
+            <select
               required
               value={lectureRoom}
               onChange={(e) => setLectureRoom(e.target.value)}
               className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+            >
+              <option value="">Select Lecture Room</option>
+              {lectureRoomOptions.map((room) => (
+                <option key={room} value={room}>{room}</option>
+              ))}
+            </select>
+            {lectureRoom === "Other" && (
+              <input
+                type="text"
+                required
+                value={customLectureRoom}
+                onChange={(e) => setCustomLectureRoom(e.target.value)}
+                placeholder="Enter custom lecture room"
+                className="w-full mt-2 px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            )}
           </div>
           <div>
             <label className="block text-blue-700 font-medium mb-2">Lecturer</label>
-            <input
-              type="text"
+            <select
               required
               value={lecturer}
               onChange={(e) => setLecturer(e.target.value)}
               className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+            >
+              <option value="">Select Lecturer</option>
+              {lecturerOptions.map((lect) => (
+                <option key={lect} value={lect}>{lect}</option>
+              ))}
+            </select>
+            {lecturer === "Other" && (
+              <input
+                type="text"
+                required
+                value={customLecturer}
+                onChange={(e) => setCustomLecturer(e.target.value)}
+                placeholder="Enter custom lecturer"
+                className="w-full mt-2 px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            )}
           </div>
           <div>
             <label className="block text-blue-700 font-medium mb-2">Level</label>
