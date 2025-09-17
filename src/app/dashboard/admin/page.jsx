@@ -28,7 +28,7 @@ const FetchTimetables = () => {
      setLoading(true);
     try {
       const res = await axios.get(
-        "http://localhost:4500/api/v1/admin/adm/viewtable",
+        "http://localhost:4500/api/v1/admin/viewtable",
         // "https://api-time-1scv.onrender.com/api/v1/admin/admin/viewtable",
         {
           params: { semester, level, year, department, lecturer, lectureRoom },
