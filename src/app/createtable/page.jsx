@@ -268,8 +268,8 @@ export default function CreateTable() {
               <option value="">Select Level</option>
               <option value="ND 1">ND1</option>
               <option value="ND 2">ND2</option>
-              <option value="HND 1">HND1 NCC</option>
-              <option value="HND 2">HND2 SWD</option>
+              <option value="HND 1">HND1 </option>
+              <option value="HND 2">HND2</option>
             </select>
           </div>
           {/* Department field removed */}
